@@ -52,6 +52,7 @@ const styles = StyleSheet.create({
         },
         shadowOpacity: 0.24,
         shadowRadius: 7,
-        elevation: 9
+        elevation: 9,
+        marginRight: 10
     }
 });
