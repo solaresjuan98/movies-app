@@ -8,6 +8,7 @@ import Carousel from 'react-native-snap-carousel';
 import { MoviePoster } from '../components/MoviePoster';
 import { useMovies } from '../hooks/useMovies';
 import { HorizontalSlider } from '../components/HorizontalSlider';
+import { GradientBackground } from '../components/GradientBackground';
 
 const { width: windowWidth } = Dimensions.get('window');
 export const HomeScreen = () => {
@@ -29,26 +30,29 @@ export const HomeScreen = () => {
 
     return (
 
-        <ScrollView>
-            <View style={{ marginTop: top + 20 }}>
+        <GradientBackground>
+            <ScrollView>
+                <View style={{ marginTop: top + 20 }}>
 
-                {/* Principal carousel */}
-                <View>
-                    <Carousel
-                        data={nowPlaying}
-                        renderItem={({ item }: any) => <MoviePoster movie={item} />}
-                        sliderWidth={windowWidth}
-                        itemWidth={300}
-                    />
+                    {/* Principal carousel */}
+                    <View>
+                        <Carousel
+                            data={nowPlaying}
+                            renderItem={({ item }: any) => <MoviePoster movie={item} />}
+                            sliderWidth={windowWidth}
+                            itemWidth={300}
+                        />
+                    </View>
+
+                    {/* Popular movies */}
+                    <HorizontalSlider title="Popular" movies={popular} />
+                    <HorizontalSlider title="Top Rated" movies={topRated} />
+                    <HorizontalSlider title="Upcoming" movies={upcoming} />
+
                 </View>
-
-                {/* Popular movies */}
-                <HorizontalSlider title="Popularr" movies={popular} />
-                <HorizontalSlider title="Top Rated" movies={topRated} />
-                <HorizontalSlider title="Upcoming" movies={upcoming} />
-
-            </View>
-        </ScrollView>
+            </ScrollView>
+        </GradientBackground>
+        
 
     )
 }
